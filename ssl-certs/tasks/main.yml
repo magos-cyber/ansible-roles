@@ -1,0 +1,20 @@
+---
+- name: Install certbot
+  apt:
+    name:
+      - certbot
+      - python3-certbot-nginx
+    state: present
+
+- name: Create SSL directory
+  file:
+    path: /etc/ssl/custom
+    state: directory
+    mode: '0700'
+
+- name: Configure certbot renewal cron
+  cron:
+    name: "certbot renew"
+    minute: "0"
+    hour: "3"
+    job: "certbot renew --quiet"
