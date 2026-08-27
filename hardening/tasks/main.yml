@@ -1,0 +1,19 @@
+---
+- name: Configure UFW
+  ufw:
+    rule: allow
+    port: "{{ item }}"
+  loop:
+    - "22"
+    - "80"
+    - "443"
+
+- name: Enable UFW
+  ufw:
+    state: enabled
+    policy: deny
+
+- name: Configure fail2ban
+  apt:
+    name: fail2ban
+    state: present
