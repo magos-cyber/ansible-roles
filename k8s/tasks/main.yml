@@ -1,0 +1,11 @@
+---
+- name: Disable swap
+  shell: swapoff -a
+
+- name: Install kubeadm
+  apt:
+    name:
+      - kubelet
+      - kubeadm
+      - kubectl
+    state: present
