@@ -1,0 +1,17 @@
+---
+- name: Update apt cache
+  apt:
+    update_cache: yes
+  when: ansible_os_family == "Debian"
+
+- name: Install base packages
+  apt:
+    name:
+      - curl
+      - wget
+      - vim
+      - htop
+      - git
+      - ufw
+    state: present
+  when: ansible_os_family == "Debian"
