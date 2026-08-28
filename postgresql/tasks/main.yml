@@ -1,0 +1,23 @@
+---
+- name: Install PostgreSQL
+  apt:
+    name: postgresql
+    state: present
+
+- name: Enable and start PostgreSQL
+  systemd:
+    name: postgresql
+    enabled: yes
+    state: started
+
+- name: Create database
+  postgresql_db:
+    name: "{{ db_name }}"
+  become_user: postgres
+
+- name: Create user
+  postgresql_user:
+    name: "{{ db_user }}"
+    password: "{{ db_password }}"
+    db: "{{ db_name }}"
+  become_user: postgres
