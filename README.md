@@ -1,16 +1,20 @@
 # Ansible Roles
 
-Collection of Ansible roles for server hardening, Docker, K8s, and monitoring.
+Reusable Ansible roles for server provisioning and management.
 
 ## Roles
 
 | Role | Description |
 |------|-------------|
-| common/ | Base server setup |
-| docker/ | Docker installation |
-| k8s/ | Kubernetes node preparation |
-| hardening/ | Security hardening |
-| monitoring/ | Monitoring stack deployment |
+| `common` | Base system setup (packages, SSH) |
+| `docker` | Docker installation |
+| `k8s` | Kubernetes node preparation |
+| `hardening` | Security hardening (UFW, fail2ban) |
+| `monitoring` | Monitoring stack deployment |
+| `nginx` | Nginx web server |
+| `redis` | Redis cache server |
+| `postgresql` | PostgreSQL database |
+| `prometheus` | Prometheus monitoring |
 
 ## Usage
 
@@ -19,4 +23,14 @@ Collection of Ansible roles for server hardening, Docker, K8s, and monitoring.
   roles:
     - magos-cyber.common
     - magos-cyber.docker
+    - magos-cyber.hardening
 ```
+
+## Requirements
+
+- Ansible 2.9+
+- Target: Debian/Ubuntu
+
+## License
+
+MIT
